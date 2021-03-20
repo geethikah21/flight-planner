@@ -1,4 +1,5 @@
 {
+  "homepage": "https://geethikah21.github.io/flight-planner",
   "name": "flight-planner",
   "version": "0.1.0",
   "private": true,
@@ -42,6 +43,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "homepage": "https://geethikah21.github.io/flight-planner"
+  }
 }
