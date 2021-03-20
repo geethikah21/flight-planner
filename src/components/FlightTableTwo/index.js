@@ -4,12 +4,12 @@ import Table from 'react-bootstrap/Table'
 
 function FlightTableTwo(props) {
     const columns = [
-        { field: 'date', headerName: 'Date', width: 400}, 
-        { field: 'price', headerName: 'Price', width: 400},
-        { field: 'carrier', headerName: 'Carrier', width: 400},
-        { field: 'from', headerName: "From", width: 400}, 
-        { field: 'to', headerName: "To", width: 400},
-        { field: 'direct', headerName: 'Direct', width: 400},
+        { field: 'date', headerName: 'Date', width: 250}, 
+        { field: 'price', headerName: 'Price', width: 250},
+        { field: 'carrier', headerName: 'Carrier', width: 250},
+        { field: 'from', headerName: "From", width: 250}, 
+        { field: 'to', headerName: "To", width: 250},
+        { field: 'direct', headerName: 'Direct', width: 250},
     ];
 
     let rows = [];
