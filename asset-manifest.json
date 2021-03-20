@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/flight-planner/static/css/main.67a2c8ba.chunk.css",
+    "main.js": "/flight-planner/static/js/main.a7b19242.chunk.js",
+    "main.js.map": "/flight-planner/static/js/main.a7b19242.chunk.js.map",
+    "runtime-main.js": "/flight-planner/static/js/runtime-main.857bb81d.js",
+    "runtime-main.js.map": "/flight-planner/static/js/runtime-main.857bb81d.js.map",
+    "static/css/2.4c97ca4f.chunk.css": "/flight-planner/static/css/2.4c97ca4f.chunk.css",
+    "static/js/2.10a7abd4.chunk.js": "/flight-planner/static/js/2.10a7abd4.chunk.js",
+    "static/js/2.10a7abd4.chunk.js.map": "/flight-planner/static/js/2.10a7abd4.chunk.js.map",
+    "static/js/3.6710c6ec.chunk.js": "/flight-planner/static/js/3.6710c6ec.chunk.js",
+    "static/js/3.6710c6ec.chunk.js.map": "/flight-planner/static/js/3.6710c6ec.chunk.js.map",
+    "index.html": "/flight-planner/index.html",
+    "static/css/2.4c97ca4f.chunk.css.map": "/flight-planner/static/css/2.4c97ca4f.chunk.css.map",
+    "static/css/main.67a2c8ba.chunk.css.map": "/flight-planner/static/css/main.67a2c8ba.chunk.css.map",
+    "static/js/2.10a7abd4.chunk.js.LICENSE.txt": "/flight-planner/static/js/2.10a7abd4.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.857bb81d.js",
+    "static/css/2.4c97ca4f.chunk.css",
+    "static/js/2.10a7abd4.chunk.js",
+    "static/css/main.67a2c8ba.chunk.css",
+    "static/js/main.a7b19242.chunk.js"
+  ]
+}
