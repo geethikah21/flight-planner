@@ -2,6 +2,9 @@
 This project is deployed at https://geethikah21.github.io/flight-planner/.
 To see the app in action, go to this website.
 
+To run from source (if site is not working): take .env.example file, take the .example off, then insert
+your Skyscanner API key into the variable in this file from the RapidAPI site
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

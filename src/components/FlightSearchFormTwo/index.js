@@ -13,6 +13,12 @@ class FlightSearchFormTwo extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.getRoutes = this.getRoutes.bind(this);
 
+        // state variables
+        // fly_from_* describes start location
+        // fly_to_* describes destination location
+        // early describes departure date
+        // late describes return date
+        // *_alert methods are for displaying error messages
         this.state = {
             fly_from_city: "",
             fly_from_state: "",
@@ -29,6 +35,8 @@ class FlightSearchFormTwo extends Component {
 
     }
 
+    // Obtain list of places from API based on currency and search query
+    // Uses the list places endpoint
     async getPlaces(currency) {
         const reqOptions = {
             method: 'GET',
@@ -64,6 +72,8 @@ class FlightSearchFormTwo extends Component {
         return [from_places, to_places];
     }
 
+    // Obtain routes/cheapeast routes from API
+    // Uses the browse routes inbound endpoint
     async getRoutes(currency, origin, destination, outbound_date, inbound_date) {
         const reqOptions = {
             method: 'GET',
@@ -82,6 +92,7 @@ class FlightSearchFormTwo extends Component {
         }
     }
 
+    // Handles form submission: checks for form validity and then gets routes from API
     handleSubmit(event) {
         event.preventDefault();
 
@@ -103,7 +114,7 @@ class FlightSearchFormTwo extends Component {
                         const to_id = placeIds[1].Places[0].PlaceId;
                         const from_id = placeIds[0].Places[0].PlaceId;
 
-                        // search for things - call API
+                        // search for flights - call API
                         self.getRoutes(self.state.currency, from_id, to_id, self.state.early, self.state.late);
                     }
                 }
@@ -111,6 +122,7 @@ class FlightSearchFormTwo extends Component {
         }
     }
 
+    // Handles form field changes - update state
     handleChange(event) {
         const target = event.target;
         const name = target.name;
@@ -122,6 +134,7 @@ class FlightSearchFormTwo extends Component {
         });
     }
 
+    // Renders this component
     render() {
         let states = new Map();
 
@@ -266,12 +279,12 @@ class FlightSearchFormTwo extends Component {
 
                         <Form.Group>
                             <Form.Row>
-                                <Form.Label>Earliest Flight Date: </Form.Label>
+                                <Form.Label>Outgoing Date: </Form.Label>
                                 <Col>
                                     <Form.Control type="text" name="early" placeholder="yyyy-mm-dd, yyyy-mm, or anytime" 
                                         onChange={this.handleChange}/>
                                 </Col>
-                                <Form.Label>Latest Flight Date: </Form.Label>
+                                <Form.Label>Return Date: </Form.Label>
                                 <Col>
                                     <Form.Control type="text" name="late" placeholder="yyyy-mm-dd, yyyy-mm, or anytime"
                                         onChange={this.handleChange}/>
