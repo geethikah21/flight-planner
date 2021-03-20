@@ -47,7 +47,8 @@ class FlightSearchFormTwo extends Component {
 
         response = await response.json();
 
-        const to_places = response;
+        const from_places = response;
+        
         response = await fetch(`https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/US/${currency}/en-US/?` + new URLSearchParams({query: this.state.fly_to_city}), reqOptions)
         
         if(response.status != 200) {
@@ -57,19 +58,13 @@ class FlightSearchFormTwo extends Component {
 
         response = await response.json();
 
-        const from_places = response;
+        const to_places = response;
 
         this.setState({error_alert: false});
-        return [to_places, from_places];
+        return [from_places, to_places];
     }
 
     async getRoutes(currency, origin, destination, outbound_date, inbound_date) {
-        // console.log(currency);
-        // console.log(origin);
-        // console.log(destination);
-        // console.log(outbound_date);
-        // console.log(inbound_date);
-
         const reqOptions = {
             method: 'GET',
             headers: {
@@ -90,16 +85,6 @@ class FlightSearchFormTwo extends Component {
     handleSubmit(event) {
         event.preventDefault();
 
-        // console.log(this.state.fly_from_city);
-        // console.log(this.state.fly_from_state)
-        // console.log(this.state.fly_from_country);
-        // console.log(this.state.fly_to_city);
-        // console.log(this.state.fly_to_state)
-        // console.log(this.state.fly_to_country);
-        // console.log(this.state.currency);
-        // console.log(this.state.early);
-        // console.log(this.state.late);
-
         if(this.state.fly_from_city === "" || this.state.fly_from_country === "" 
             || this.state.fly_from_state === "" || this.state.fly_to_city === ""
             || this.state.fly_to_state === "" || this.state.fly_to_country === ""
@@ -115,8 +100,8 @@ class FlightSearchFormTwo extends Component {
             placeIds.then(
                 function determinePlaceIds(placeIds) {
                     if(placeIds != null) {
-                        const to_id = placeIds[0].Places[0].PlaceId;
-                        const from_id = placeIds[1].Places[0].PlaceId;
+                        const to_id = placeIds[1].Places[0].PlaceId;
+                        const from_id = placeIds[0].Places[0].PlaceId;
 
                         // search for things - call API
                         self.getRoutes(self.state.currency, from_id, to_id, self.state.early, self.state.late);
@@ -124,17 +109,6 @@ class FlightSearchFormTwo extends Component {
                 }
             );
         }
-
-        // console.log(this.state.fly_from_city);
-        // console.log(this.state.fly_from_state)
-        // console.log(this.state.fly_from_country);
-        // console.log(this.state.fly_to_city);
-        // console.log(this.state.fly_to_state)
-        // console.log(this.state.fly_to_country);
-        // console.log(this.state.currency);
-        // console.log(this.state.early);
-        // console.log(this.state.late);
-
     }
 
     handleChange(event) {

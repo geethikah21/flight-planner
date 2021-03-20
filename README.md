@@ -1,3 +1,7 @@
+# To run 
+This project is deployed at https://geethikah21.github.io/flight-planner/.
+To see the app in action, go to this website.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

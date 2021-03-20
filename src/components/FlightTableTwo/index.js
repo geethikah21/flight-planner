@@ -1,8 +1,10 @@
 import { DataGrid, GridRowsProp, GridColDef } from '@material-ui/data-grid'
-import React from 'react'
+import { React, useState } from 'react'
 import Table from 'react-bootstrap/Table'
+import Alert from 'react-bootstrap/Alert'
 
 function FlightTableTwo(props) {
+
     const columns = [
         { field: 'date', headerName: 'Date', width: 200}, 
         { field: 'price', headerName: 'Price', width: 200},
@@ -13,12 +15,17 @@ function FlightTableTwo(props) {
     ];
 
     let rows = [];
-
+    let carriers = new Map();
+    let places = new Map();
+    
     if(props.ready) {
-        let carriers = new Map();
 
         for(let i = 0; i < props.data.Carriers.length; i++) {
             carriers.set(props.data.Carriers[i].CarrierId, props.data.Carriers[i].Name);
+        }
+
+        for(let j = 0; j < props.data.Places.length; j++) {
+            places.set(props.data.Places[j].PlaceId, props.data.Places[j].Name);
         }
 
         props.data.Quotes.map((quote, index) => {
@@ -32,8 +39,8 @@ function FlightTableTwo(props) {
                     "date": parsedOutboundDate,
                     "price": quote.MinPrice,
                     "carrier": carriers.get(quote.OutboundLeg.CarrierIds[0]),
-                    "from": props.data.Places[0].Name,
-                    "to": props.data.Places[1].Name,
+                    "from": places.get(quote.OutboundLeg.OriginId),
+                    "to": places.get(quote.OutboundLeg.DestinationId),
                     "direct": directString
                 }
             );
@@ -44,8 +51,8 @@ function FlightTableTwo(props) {
                     "date": parsedInboundDate,
                     "price": quote.MinPrice,
                     "carrier": carriers.get(quote.InboundLeg.CarrierIds[0]),
-                    "from": props.data.Places[1].Name,
-                    "to": props.data.Places[0].Name,
+                    "from": places.get(quote.InboundLeg.OriginId),
+                    "to": places.get(quote.InboundLeg.DestinationId),
                     "direct": directString
                 }
             );
@@ -53,8 +60,28 @@ function FlightTableTwo(props) {
     }
 
     return (
-        <div style={{ display: 'flex', height: '100%', flexGrow: 1, background: "white" }}>
-            <DataGrid autoHeight rows={rows} columns={columns} variant="dark" pageSize={10}/>
+        <div>
+            <div className="routes_alert">
+                {props.ready ? 
+                            <Alert variant="success">
+                                <Alert.Heading>
+                                    The cheapest routes are: 
+                                    {
+                                        props.data.Routes.map((route, index) => {
+                                            return (
+                                                ` ${index + 1}) ${places.get(route.OriginId)} to ${places.get(route.DestinationId)}
+                                                 for ${route.Price} ${props.data.Currencies[0].Code}`
+                                            )
+                                        })
+                                    }
+                                </Alert.Heading>
+                            </Alert>
+                            : null
+                }
+            </div>
+            <div style={{ display: 'flex', height: '100%', flexGrow: 1, background: "white" }}>
+                <DataGrid autoHeight rows={rows} columns={columns} variant="dark" pageSize={10}/>
+            </div>
         </div>
     );
 }
