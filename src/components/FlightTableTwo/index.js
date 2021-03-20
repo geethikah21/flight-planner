@@ -7,8 +7,8 @@ function FlightTableTwo(props) {
         { field: 'date', headerName: 'Date', width: 200}, 
         { field: 'price', headerName: 'Price', width: 200},
         { field: 'carrier', headerName: 'Carrier', width: 200},
-        { field: 'from', headerName: "From", width: 300}, 
-        { field: 'to', headerName: "To", width: 300},
+        { field: 'from', headerName: "From", width: 400}, 
+        { field: 'to', headerName: "To", width: 400},
         { field: 'direct', headerName: 'Direct', width: 200},
     ];
 
